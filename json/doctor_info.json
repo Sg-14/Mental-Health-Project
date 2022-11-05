@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Shaun Murphy",
+    "image": "Assets/Images/bh2.jpeg",
+    "phone":"6266991361",
+    "email": "dr.shaun.murphy@gmail.com",
+    "address": "Mumbai",
+    "description": "Dr Puneet Dwevedi is one of the best Psychiatrist in Gurgaon with the experience of 17 years in this field. Dr. Puneet Dwevedi is a Consultant Psychiatrist and the Head of the Department of Mental Health and Behavioural Sciences, Fortis Healthcare. Dr. Puneet Dwevedi has done his MBBS from UCMS, Delhi and his MD Psychiatry from Lady Hardinge Medical College, Delhi.",
+    "rating": "4.0",
+    "rated_count": "300",
+    "experience": "4 years"
+  },
+  {
+    "name": "Sachin Tendulkar",
+    "image": "Assets/Images/bh2.jpeg",
+    "phone":"6266991362",
+    "email": "dr.sachin.tendulkar@gmail.com",
+    "address": "Mumbai",
+    "description": "description",
+    "rating": "4.0",
+    "rated_count": "300",
+    "experience": "4 years"
+  },
+  {
+    "name": "Shaun Murphy",
+    "image": "Assets/Images/bh2.jpeg",
+    "phone":"6266991361",
+    "email": "dr.shaun.murphy@gmail.com",
+    "address": "Mumbai",
+    "description": "description",
+    "rating": "4.0",
+    "rated_count": "300",
+    "experience": "4 years"
+  }
+]
