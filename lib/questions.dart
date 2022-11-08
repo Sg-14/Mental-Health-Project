@@ -1,5 +1,6 @@
 class Brain {
   int count = 0;
+  int j = 1;
   int curr_question = 0;
   final List<String> _questions = [
     'Question Display',
@@ -11,8 +12,18 @@ class Brain {
     return _questions[count];
   }
 
-  int Get(){
+  String getquestion2(int index) {
+    return _questions[index];
+  }
+
+  int Get() {
     curr_question = count;
+    return curr_question;
+  }
+
+  String lol() {
+    String curr_question = j.toString();
+    j++;
     return curr_question;
   }
 
@@ -24,4 +35,7 @@ class Brain {
     }
   }
 
+  int total() {
+    return _questions.length;
+  }
 }

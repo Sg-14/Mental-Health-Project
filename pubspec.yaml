@@ -71,7 +71,18 @@ flutter:
     - family: Dancingscript
       fonts:
         - asset: Assets/fonts/DancingScript-Bold.ttf
-
+    - family: Arvo
+      fonts:
+        - asset: Assets/fonts/Arvo-Regular.ttf
+    - family: Heebo
+      fonts:
+        - asset: Assets/fonts/Heebo-VariableFont_wght.ttf
+    - family: Raleway
+      fonts:
+        - asset: Assets/fonts/Raleway-VariableFont_wght.ttf
+    - family: Ubuntu
+      fonts:
+        - asset: Assets/fonts/Ubuntu-Italic.ttf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
