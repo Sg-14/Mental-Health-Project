@@ -7,7 +7,13 @@ import 'questions.dart';
 Brain questions = Brain();
 
 class Showreport extends StatefulWidget {
-  const Showreport({Key? key}) : super(key: key);
+
+  final String ans0;
+  final String ans1;
+  final String ans2;
+  final String ans3;
+
+  Showreport({required this.ans0, required this.ans1, required this.ans2, required this.ans3});
 
   @override
   State<Showreport> createState() => _ShowreportState();

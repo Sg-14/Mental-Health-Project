@@ -2,6 +2,7 @@ import 'package:dart_date/dart_date.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_signin/getInfo.dart';
 import 'AuthServices.dart';
 import 'quiz_screen.dart';
 import 'show_report.dart';
@@ -12,81 +13,66 @@ class GetAnswers extends StatefulWidget {
 }
 
 class _GetAnswersState extends State<GetAnswers> {
-  final CollectionReference _collectionRef =
-  FirebaseFirestore.instance.collection(AuthService().inputData()!);
+  // final CollectionReference _collectionRef =
+  // FirebaseFirestore.instance.collection(AuthService().inputData()!);
+  //
+  // Future getData() async {
+  //   // Get docs from collection reference
+  //   QuerySnapshot querySnapshot = await _collectionRef.get();
+  //
+  //   // Get data from docs and convert map to List
+  //   final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+  //
+  //   // print(allData);
+  //   // print(allData.length);
+  //   // print(allData[1]);
+  //   print(allData);
+  //   return allData.length;
+  // }
 
-  Future<int> getData() async {
-    // Get docs from collection reference
-    QuerySnapshot querySnapshot = await _collectionRef.get();
+  final user = FirebaseAuth.instance.currentUser;
 
-    // Get data from docs and convert map to List
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+  List<String> docIds = [];
 
-    // print(allData);
-    // print(allData.length);
-    // print(allData[1]);
-    return allData.length;
+  Future getDocIds() async{
+    await FirebaseFirestore.instance.collection(AuthService().inputData()!).get().then(
+            (snapshot) => snapshot.docs.forEach((element) {
+              print(element.reference);
+              docIds.add(element.reference.id);
+            }));
   }
-
   // late int i = getData() as int;
   // late int i = getData() as int;
   // async abc(i){i=getData();}
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    getData();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   getDocIds();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          body: Column(
-            children: [
-              // print(i);
-              Container(
-                height: 150,
-                child: const Center(
-                  child: Text(
-                    'Reports',
-                    style: TextStyle(fontSize: 50, fontFamily: 'DancingScript'),
-                  ),
-                ),
-              ),
-              for (int j = 1; j <= 3; j++)
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Showreport()));
-                      },
-                      child: Container(
-                        height: 100,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: const Color(0xFFEFEBE9),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'Test-1',
-                            style: TextStyle(
-                              fontSize: 30,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    )
-                  ],
-                )
-            ],
-          ),
-        ));
+          body: Container(
+            child: FutureBuilder(
+              future: getDocIds(),
+              builder: (context, snapshot){
+                return ListView.builder(
+                    itemCount: docIds.length,
+                    itemBuilder: (context, index){
+                      return ListTile(
+                          title: GetInfo(documentId: docIds[index]),
+                          tileColor: Colors.greenAccent
+                      );
+                    }
+                );
+              },
+            )
+            ),
+          )
+        );
   }
 }

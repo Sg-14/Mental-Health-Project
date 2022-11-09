@@ -144,7 +144,10 @@ class _TestsState extends State<Tests> {
                               });
                               ;
                               await _firestore.collection(uid!).doc('$name').set({
-                                'data': l
+                                'question0': l[0],
+                                'question1': l[1],
+                                'question2': l[2],
+                                'question3': l[3],
                               });
                             },
                             child: const Text(
