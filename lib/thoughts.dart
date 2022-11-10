@@ -6,9 +6,9 @@ class Thoughts {
     'Anger resolves nothing it only puts up your blood pressure.',
   ];
   final List<String> _sad = [
-    'There are moments when I wish I could roll back the clock and take all the sadness away, but I have the feeling that if I did, the joy would be gone as well.',
     'Life under no obligation to give us what we expect.',
     'You see, I usually find myself among strangers because I drift here and there trying to forget the sad things that happened to me.',
+    'There are moments when I wish I could roll back the clock and take all the sadness away, but I have the feeling that if I did, the joy would be gone as well.'
   ];
   final List<String> _cry = [
     'Dont cry over the past, its gone.',
@@ -40,6 +40,7 @@ class Thoughts {
     if (count < 2) {
       return count++;
     } else {
+      count=0;
       return count;
     }
   }

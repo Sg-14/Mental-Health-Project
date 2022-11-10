@@ -3,10 +3,10 @@ class Brain {
   int j = 1;
   int curr_question = 0;
   final List<String> _questions = [
-    'Question Display',
-    'Some cats are actually allergic to humans',
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
+    'How many good freinds do you have?',
+    'Approximate hours of sleep you are getting?',
+    'How often dou you feel lonely rate on  a scale of 1 to 10.',
+    'How satisfied are you with your college/school or place of work (rate on scale of 1 to 10)?',
   ];
   String getquestion() {
     return _questions[count];

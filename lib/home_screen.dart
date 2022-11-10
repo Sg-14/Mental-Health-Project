@@ -26,6 +26,7 @@ class _HomescreenState extends State<Homescreen> {
   // }
 
   String a = 'How do you feel today?';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -103,6 +104,7 @@ class _HomescreenState extends State<Homescreen> {
                         onPressed: () {
                           setState(() {
                             a = feeling.getsad();
+                            feeling.next();
                             const Text(
                               Demoji.disappointed,
                               style: TextStyle(fontSize: 60),
@@ -117,6 +119,7 @@ class _HomescreenState extends State<Homescreen> {
                         onPressed: () {
                           setState(() {
                             a  = feeling.getangry();
+                            feeling.next();
                             const Text(
                               Demoji.angry,
                               style: TextStyle(fontSize: 30,
@@ -133,6 +136,7 @@ class _HomescreenState extends State<Homescreen> {
                         onPressed: () {
                           setState(() {
                             a = feeling.getcry();
+                            feeling.next();
                             const Text(
                               Demoji.sob,
                               style: TextStyle(fontSize: 30),
@@ -147,6 +151,7 @@ class _HomescreenState extends State<Homescreen> {
                         onPressed: () {
                           setState(() {
                             a = feeling.gethappy();
+                            feeling.next();
                             const Text(
                               Demoji.grinning,
                               style: TextStyle(fontSize: 30),

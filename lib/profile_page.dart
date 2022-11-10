@@ -17,17 +17,23 @@ class _ProfileState extends State<Profile> {
   String? age = '';
   String? city = '';
   String? email = '';
+  String? photo = '';
+  String? phone = '';
 
   Future getData() async{
     await FirebaseFirestore.instance.collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid).get()
     .then((snapshot) async{
       if(snapshot.exists){
+        final User user = FirebaseAuth.instance.currentUser!;
+        print(user.photoURL);
         setState(() {
           name = snapshot.data()!["name"];
           age = snapshot.data()!["age"];
           email = snapshot.data()!["email"];
           city = snapshot.data()!["city"];
+          phone = snapshot.data()!["phone"];
+          photo = user.photoURL;
         });
       }
     })
@@ -53,10 +59,7 @@ class _ProfileState extends State<Profile> {
 // crossAxisAlignment: CrossAxisAlignment.end,
 // crossAxisAlignment: CrossAxialAlignment.stretch, stretche the containers to span the whole width of screen
             children: <Widget>[
-              CircleAvatar(
-                radius: 60.0,
-                backgroundImage: AssetImage('images/shivank.jpg'),
-              ),
+              AuthService().getProfileImage(),
               Text(
                 'Name: '+name!,
                 style: TextStyle(
@@ -83,6 +86,14 @@ class _ProfileState extends State<Profile> {
                   color: Colors.white60,
                 ),
               ),
+              // SizedBox(
+              //   height: 20.0,
+              //   width: 220.0,
+              //   child: Divider(
+              //     // Similar to hr tag of html
+              //     color: Colors.white60,
+              //   ),
+              // ),
               Card(
                 // Instead of card we can also use container but card is desigmed for this purpose only
                 color: Colors.white,
@@ -96,7 +107,7 @@ class _ProfileState extends State<Profile> {
                       color: Colors.blueGrey,
                     ),
                     title: Text(
-                      '+91 6266991360',
+                      phone!,
                       style: TextStyle(
                         color: Colors.blueGrey,
                         fontSize: 18.0,
@@ -118,7 +129,29 @@ class _ProfileState extends State<Profile> {
                       color: Colors.blueGrey,
                     ),
                     title: Text(
-                      'Email: '+email!,
+                      email!,
+                      style: TextStyle(
+                        color: Colors.blueGrey,
+                        fontSize: 18.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                // Instead of card we can also use container but card is desigmed for this purpose only
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+// padding: EdgeInsets.all(5.0),   // Card widget does not support padding hence we have to wrap row with padding widget
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.location_city,
+                      color: Colors.blueGrey,
+                    ),
+                    title: Text(
+                      city!,
                       style: TextStyle(
                         color: Colors.blueGrey,
                         fontSize: 18.0,

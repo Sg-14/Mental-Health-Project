@@ -22,6 +22,7 @@ class _UserDataState extends State<UserData> {
   final TextEditingController ageController = new TextEditingController();
   final TextEditingController cityController = new TextEditingController();
   final TextEditingController emailController = new TextEditingController();
+  final TextEditingController phoneController = new TextEditingController();
 
   // String uid = uid;
 
@@ -92,7 +93,29 @@ class _UserDataState extends State<UserData> {
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.calendar_today),
-          hintText: 'Email',
+          hintText: 'Age',
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15)
+      ),
+    );
+
+    final phoneField = TextFormField(
+      autofocus: false,
+      controller: phoneController,
+      keyboardType: TextInputType.number,
+      validator: (value){
+        if(value!.isEmpty){
+          return('Please enter your phone number');
+        }
+        return null;
+      },
+      onSaved: (value){
+        phoneController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+          prefixIcon: Icon(Icons.phone_android),
+          hintText: 'Phone Number',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15)
       ),
@@ -109,12 +132,12 @@ class _UserDataState extends State<UserData> {
         return null;
       },
       onSaved: (value){
-        nameController.text = value!;
+        cityController.text = value!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.home),
-          hintText: 'Email',
+          hintText: 'City',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15)
       ),
@@ -127,7 +150,7 @@ class _UserDataState extends State<UserData> {
         child: MaterialButton(
           onPressed: ()async{
             final uid = AuthService().inputData();
-            await create('users', uid!, nameController.text, cityController.text, emailController.text, ageController.text);
+            await create('users', uid!, nameController.text, cityController.text, emailController.text, ageController.text, phoneController.text);
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => Homescreen()));
           },
@@ -154,6 +177,8 @@ class _UserDataState extends State<UserData> {
                 child: Column(
                   children: <Widget>[
                     emailField,
+                    SizedBox(height: 30,),
+                    phoneField,
                     SizedBox(height: 30,),
                     nameField,
                     SizedBox(height: 30,),

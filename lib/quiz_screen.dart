@@ -13,28 +13,27 @@ Brain quiz = Brain();
 class Tests extends StatefulWidget {
   const Tests({Key? key}) : super(key: key);
 
-
   @override
   State<Tests> createState() => _TestsState();
 }
 
 class _TestsState extends State<Tests> {
-  int lol=0;
+  int lol = 0;
   final _firestore = FirebaseFirestore.instance;
-  List<dynamic> l =[1];
+  List<dynamic> l = [1];
   int count = 0;
   int q_num = quiz.Get();
 
   // final List<dynamic> sub_collectionId = new List();
   List sub_collectionId = [];
-  List SubCollectionId(){
+  List SubCollectionId() {
     return sub_collectionId;
   }
 
   // getAnswers({ids: sub_collectionId});
   late int value;
   late String question;
-  final name = DateTime.now().format('dd-MMMM-yyyy','de_US');
+  final name = DateTime.now().format('dd-MMMM-yyyy', 'de_US');
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,9 +46,9 @@ class _TestsState extends State<Tests> {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-                        Center(
+                        const Center(
                           child: Text(
-                            '$q_num',
+                            'Test',
                             style: TextStyle(
                                 fontSize: 40, fontFamily: 'DancingScript'),
                           ),
@@ -136,10 +135,9 @@ class _TestsState extends State<Tests> {
                                 if (lol >= 3) {
                                   showAlertDialog(
                                       context,
-                                      'Are you sure you want to delete?',
+                                      'Thanks for completing the test',
                                       "AppName",
-                                      "Ok",
-                                      "Cancel");
+                                      "Ok");
                                 }
                               });
                               ;
@@ -165,14 +163,9 @@ class _TestsState extends State<Tests> {
   }
 }
 
-
 showAlertDialog(BuildContext context, String message, String heading,
-    String buttonAcceptTitle, String buttonCancelTitle) {
+    String buttonAcceptTitle) {
   // set up the buttons
-  Widget cancelButton = TextButton(
-    child: Text(buttonCancelTitle),
-    onPressed: () {},
-  );
   Widget continueButton = TextButton(
     child: Text(buttonAcceptTitle),
     onPressed: () {
@@ -186,23 +179,16 @@ showAlertDialog(BuildContext context, String message, String heading,
     title: Text(heading),
     content: Text(message),
     actions: [
-      cancelButton,
       continueButton,
     ],
   );
 
   // show the dialog
   showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-      );
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
 
-// class GetIds{
-//   final ids;
-//   GetIds({required this.ids});
-//   ans = ids;
-//   return ids;
-// }
