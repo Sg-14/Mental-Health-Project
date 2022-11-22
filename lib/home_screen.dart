@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:demoji/demoji.dart';
+import 'package:google_signin/Notes_page.dart';
 import 'package:google_signin/doctor_page.dart';
 import 'package:google_signin/doctor_page2.dart';
 import 'package:google_signin/profile_page.dart';
@@ -40,15 +41,15 @@ class _HomescreenState extends State<Homescreen> {
               child: const Icon(
                 Icons.home,
                 size: 30,
-                color: Color(0xFFFFD180),
+                color: Colors.deepPurple,
               ),
             ),
             GestureDetector(
               onTap: () {},
               child: const Icon(
-                Icons.home,
+                Icons.info,
                 size: 30,
-                color: Color(0xFFFFD180),
+                color: Colors.deepPurple,
               ),
             ),
             GestureDetector(
@@ -62,15 +63,15 @@ class _HomescreenState extends State<Homescreen> {
               child: const Icon(
                 Icons.account_circle,
                 size: 30,
-                color: Color(0xFFFFD180),
+                color: Colors.deepPurple,
               ),
             ),
             GestureDetector(
               onTap: () {},
               child: const Icon(
-                Icons.home,
+                Icons.logout,
                 size: 30,
-                color: Color(0xFFFFD180),
+                color: Colors.deepPurple,
               ),
             ),
           ],
@@ -113,7 +114,7 @@ class _HomescreenState extends State<Homescreen> {
                         },
                         child: const Text(
                           Demoji.disappointed,
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 30),
                         )),
                     MaterialButton(
                         onPressed: () {
@@ -130,7 +131,7 @@ class _HomescreenState extends State<Homescreen> {
                         },
                         child: const Text(
                           Demoji.angry,
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 30),
                         )),
                     MaterialButton(
                         onPressed: () {
@@ -145,7 +146,7 @@ class _HomescreenState extends State<Homescreen> {
                         },
                         child: const Text(
                           Demoji.sob,
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize:30),
                         )),
                     MaterialButton(
                         onPressed: () {
@@ -160,13 +161,14 @@ class _HomescreenState extends State<Homescreen> {
                         },
                         child: const Text(
                           Demoji.grinning,
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 30),
                         )),
                   ],
                 )
               ],
             ),
-          ), // How do you feel today
+          ),
+          SizedBox(height: 4,),// How do you feel today
           Container(
             margin: const EdgeInsets.all(25),
             decoration: BoxDecoration(
@@ -192,10 +194,12 @@ class _HomescreenState extends State<Homescreen> {
               ],
             ),
           ), // Thought of the day
+          SizedBox(height: 4,),
           const Text(
             'Exercises',
             style: TextStyle(fontSize: 20),
           ),
+          SizedBox(height: 4,),
           Container(
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -301,6 +305,42 @@ class _HomescreenState extends State<Homescreen> {
                             child: const Center(
                               child: Text(
                                 'Reports',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NotesPage()),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.all(25),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: const Color(0xFFEFEBE9),
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            'Assets/Images/notes.jpeg',
+                            height: 110,
+                            width: 120,
+                          ),
+                          Container(
+                            height: 30,
+                            width: 80,
+                            color: const Color(0xFFEFEBE9),
+                            child: const Center(
+                              child: Text(
+                                'Notes',
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
