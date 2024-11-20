@@ -1,16 +1,18 @@
-# google_signin
+# Mental Health Checker Mobile App
 
-A new Flutter project.
+## Overview  
+This is a cross-platform mobile application designed to assess the mental health of individuals through a set of carefully curated questions. The app is built using **Flutter** for the frontend and **Firebase** as the backend to handle user data, store test records, and manage authentication.  
 
-## Getting Started
+## Features  
+- **Cross-Platform Compatibility**: Runs seamlessly on both Android and iOS.  
+- **User-Friendly Interface**: Simple and intuitive design for easy navigation.  
+- **Mental Health Assessment**: Users answer a series of questions to check their mental well-being.  
+- **Data Management**: Firebase backend for secure storage of user data and test records.  
+- **Authentication**: User authentication and account management with Firebase.  
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tech Stack  
+- **Frontend**: Flutter (Dart)  
+- **Backend**: Firebase  
+  - Firestore for storing user data and test records.  
+  - Firebase Authentication for user login and sign-up.  
+  - Firebase Hosting (optional, if applicable).  
